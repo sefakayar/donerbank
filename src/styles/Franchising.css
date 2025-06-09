@@ -1,0 +1,431 @@
+/* Franchising Sayfası Stilleri */
+
+/* Ana Sayfa Yapısı */
+.franchising-page {
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+
+.franchising-page h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  color: var(--primary-color);
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.franchising-page h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+
+/* Giriş Bölümü */
+.franchising-intro {
+  margin-bottom: 60px;
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.franchising-intro p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #555;
+  max-width: 900px;
+  margin: 0 auto 15px;
+}
+
+.franchising-intro p:last-child {
+  margin-bottom: 0;
+}
+
+/* Neden Franchising Bölümü */
+.why-franchise {
+  margin-bottom: 80px;
+}
+
+.why-franchise h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.why-franchise h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.advantage-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  text-align: center;
+  border-bottom: 3px solid transparent;
+}
+
+.advantage-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-bottom-color: var(--primary-color);
+}
+
+.advantage-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.advantage-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Franchising Süreci */
+.franchise-process {
+  margin-bottom: 80px;
+  background-color: #f9f9f9;
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.franchise-process h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.franchise-process h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+
+.process-steps {
+  counter-reset: step-counter;
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.process-steps li {
+  position: relative;
+  padding: 0 0 40px 70px;
+  margin-bottom: 20px;
+  counter-increment: step-counter;
+}
+
+.process-steps li:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.process-steps li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.process-steps li::after {
+  content: "";
+  position: absolute;
+  left: 25px;
+  top: 60px;
+  width: 2px;
+  height: calc(100% - 70px);
+  background-color: rgba(227, 6, 19, 0.2);
+}
+
+.process-steps li:last-child::after {
+  display: none;
+}
+
+.process-steps li h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.process-steps li p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Yatırım Detayları */
+.investment-details {
+  margin-bottom: 80px;
+}
+
+.investment-details h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.investment-details h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+
+.investment-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.info-item {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  border-left: 4px solid var(--primary-color);
+}
+
+.info-item h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.info-item p {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* Başvuru Formu */
+.application-form {
+  margin-bottom: 40px;
+}
+
+.application-form h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.application-form h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+
+.contact-form {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(227, 6, 19, 0.1);
+}
+
+.submit-btn {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(227, 6, 19, 0.3);
+  margin-top: 10px;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: #c00;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(227, 6, 19, 0.4);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .advantages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .franchising-page h1 {
+    font-size: 36px;
+  }
+  
+  .why-franchise h2,
+  .franchise-process h2,
+  .investment-details h2,
+  .application-form h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .franchising-page {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  .franchising-page h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  
+  .franchising-intro {
+    margin-bottom: 50px;
+  }
+  
+  .why-franchise,
+  .franchise-process,
+  .investment-details {
+    margin-bottom: 60px;
+  }
+  
+  .franchise-process {
+    padding: 30px;
+  }
+  
+  .investment-info {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-form {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .advantages-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .franchising-page h1 {
+    font-size: 28px;
+  }
+  
+  .why-franchise h2,
+  .franchise-process h2,
+  .investment-details h2,
+  .application-form h2 {
+    font-size: 24px;
+  }
+  
+  .process-steps li {
+    padding-left: 60px;
+  }
+  
+  .process-steps li::before {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  
+  .process-steps li::after {
+    left: 20px;
+    top: 50px;
+  }
+} 
