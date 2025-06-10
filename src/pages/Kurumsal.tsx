@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Kurumsal.css';
 import SEO from '../components/SEO';
 import kurumsal from '../images/kurumsal.png';
 
-// Belge görselleri
+// Belge görselleri - direkt URL kullanarak test edelim
 import isletmeonay from '../images/belge/isletmeonay.webp';
 import isletmeonay2 from '../images/belge/isletmeonay2.webp';
 import isletmeonay3 from '../images/belge/isletmeonay3.webp';
@@ -16,9 +16,9 @@ import markatescil2 from '../images/belge/markatescil2.webp';
 import sanayisicil from '../images/belge/sanayisicil.webp';
 
 const Kurumsal: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState({ src: '', title: '' });
+  const documentsRef = useRef<HTMLDivElement>(null);
   
   const belgeler = [
     { src: isletmeonay, title: "İşletme Onayı" },
@@ -32,18 +32,6 @@ const Kurumsal: React.FC = () => {
     { src: markatescil2, title: "Marka Tescil 2" },
     { src: sanayisicil, title: "Sanayi Sicil" }
   ];
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % belgeler.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + belgeler.length) % belgeler.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
 
   const openModal = (belge: { src: string; title: string }) => {
     setModalImage(belge);
@@ -167,43 +155,27 @@ const Kurumsal: React.FC = () => {
           </ul>
         </section>
 
-        <section className="kurumsal-documents">
+        <section className="kurumsal-documents" ref={documentsRef}>
           <h2>Belgelerimiz ve Sertifikalarımız</h2>
           <p>Döner Bank olarak sahip olduğumuz resmi belgeler ve kalite sertifikalarımız</p>
           
-          <div className="documents-slider">
-            <div className="slider-container">
-              <div className="slider-wrapper" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-                {belgeler.map((belge, index) => (
-                  <div key={index} className="slide">
-                    <div className="document-card" onClick={() => openModal(belge)}>
-                      <img src={belge.src} alt={belge.title} className="document-image" />
-                      <div className="document-overlay">
-                        <span className="zoom-icon">🔍</span>
-                        <span className="zoom-text">Büyütmek için tıklayın</span>
-                      </div>
-                    </div>
+          <div className="documents-grid">
+            {belgeler.map((belge, index) => (
+              <div key={index} className="document-item">
+                <div className="document-card" onClick={() => openModal(belge)}>
+                  <img 
+                    src={belge.src} 
+                    alt={belge.title} 
+                    className="document-image"
+                  />
+                  <h4 className="document-title">{belge.title}</h4>
+                  <div className="document-overlay">
+                    <span className="zoom-icon">🔍</span>
+                    <span className="zoom-text">Büyütmek için tıklayın</span>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-            
-            <button className="slider-btn prev-btn" onClick={prevSlide}>
-              <span>‹</span>
-            </button>
-            <button className="slider-btn next-btn" onClick={nextSlide}>
-              <span>›</span>
-            </button>
-            
-            <div className="slider-dots">
-              {belgeler.map((_, index) => (
-                <button
-                  key={index}
-                  className={`dot ${index === currentSlide ? 'active' : ''}`}
-                  onClick={() => goToSlide(index)}
-                />
-              ))}
-            </div>
+            ))}
           </div>
         </section>
       </div>
