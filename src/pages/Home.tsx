@@ -1,11 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import kurumsal from '../images/kurumsal.png';
 import banner from '../images/banner.png';
+import slider1 from '../images/slider1.jpg';
+import slider2 from '../images/slider2.jpg';
+import slider3 from '../images/slider3.jpg';
+import slider4 from '../images/slider4.jpg';
 import ctaBackground from '../images/cta-section.png';
 import SEO from '../components/SEO';
 
 const Home: React.FC = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Slider görselleri
+  const slides = [
+    {
+      image: banner,
+      title: "DÖNER BANK",
+      subtitle: "Geleneksel Lezzetin Kurumsal Adresi",
+      description: "1992'den beri kaliteli döner üretimi",
+      showText: true
+    },
+    {
+      image: slider1,
+      title: "",
+      subtitle: "",
+      description: "",
+      showText: false
+    },
+    {
+      image: slider2,
+      title: "",
+      subtitle: "",
+      description: "",
+      showText: false
+    },
+    {
+      image: slider3,
+      title: "",
+      subtitle: "",
+      description: "",
+      showText: false
+    },
+    {
+      image: slider4,
+      title: "",
+      subtitle: "",
+      description: "",
+      showText: false
+    }
+  ];
   
   const testimonials = [
     {
@@ -41,6 +85,26 @@ const Home: React.FC = () => {
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
+
+  // Slider kontrol fonksiyonları
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+
+
+  // Otomatik slider
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000); // 5 saniyede bir değişir
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -83,18 +147,44 @@ const Home: React.FC = () => {
         schemaData={organizationSchema}
       />
       <section className="hero-section">
-        <div className="hero-overlay">
-          <img src={banner} alt="Döner Bank Banner" className="hero-banner" />
-        </div>
-        <div className="container hero-container">
-          <div className="hero-content">
-            <h1>DÖNER BANK</h1>
-            <p className="tagline">Geleneksel Lezzetin Kurumsal Adresi</p>
-            <div className="hero-buttons">
-              <a href="/franchising" className="btn btn-primary">Franchising Fırsatları</a>
-              <a href="/fabrikamiz" className="btn btn-outline">Fabrikamızı Keşfedin</a>
-            </div>
+        <div className="hero-slider">
+          <div className="slider-container">
+            {slides.map((slide, index) => (
+              <div 
+                key={index}
+                className={`slide ${index === currentSlide ? 'active' : ''}`}
+                style={{ backgroundImage: `url(${slide.image})` }}
+              >
+                <div className="slide-overlay">
+                  <div className="container hero-container">
+                    <div className="hero-content">
+                      {slide.showText && (
+                        <>
+                          <h1>{slide.title}</h1>
+                          <p className="tagline">{slide.subtitle}</p>
+                          <p className="slide-description">{slide.description}</p>
+                          <div className="hero-buttons">
+                            <a href="/franchising" className="btn btn-primary">Franchising Fırsatları</a>
+                            <a href="/fabrikamiz" className="btn btn-outline">Fabrikamızı Keşfedin</a>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
+          
+          {/* Slider Navigation */}
+          <button className="slider-nav prev" onClick={prevSlide}>
+            <i className="fas fa-chevron-left"></i>
+          </button>
+          <button className="slider-nav next" onClick={nextSlide}>
+            <i className="fas fa-chevron-right"></i>
+          </button>
+          
+
         </div>
       </section>
       
@@ -210,15 +300,7 @@ const Home: React.FC = () => {
               </button>
             </div>
             
-            <div className="slider-dots">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  className={`dot ${index === currentTestimonial ? 'active' : ''}`}
-                  onClick={() => setCurrentTestimonial(index)}
-                />
-              ))}
-            </div>
+
           </div>
         </div>
       </section>
